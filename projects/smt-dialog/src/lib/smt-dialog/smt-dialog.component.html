@@ -1,0 +1,23 @@
+<div class="overlay" [ngClass]="{ active: isOpen }"></div>
+<div class="modal" [ngClass]="{ active: isOpen }" [ngStyle]="modalStyle">
+  <div class="smt-head">
+    <p class="smt-title">{{ title }}</p>
+    <span class="material-symbols-outlined close-icon" (click)="onCloseModal()"
+      >close
+    </span>
+  </div>
+  <div class="smt-container">
+    <ng-content></ng-content>
+
+    <div class="button-container">
+      <button
+        *ngFor="let button of buttons"
+        type="button"
+        (click)="executeAction(button.action)"
+        [ngClass]="'btn btn-' + button.style"
+      >
+        {{ button.text }}
+      </button>
+    </div>
+  </div>
+</div>
